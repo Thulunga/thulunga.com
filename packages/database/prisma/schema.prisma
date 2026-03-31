@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// Shared models (used across all subdomains)
+// ============================================
+
+model User {
+  id        String   @id @default(cuid())
+  clerkId   String   @unique
+  name      String
+  email     String   @unique
+  district  String?
+  community String?
+  bio       String?  @db.Text
+  avatarUrl String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  savedOpportunities SavedOpportunity[]
+
+  @@map("users")
+}
+
+// ============================================
+// Careers subdomain models
+// ============================================
+
+model Opportunity {
+  id                  String   @id @default(cuid())
+  title               String
+  description         String   @db.Text
+  type                String   // government_exam, scholarship, job, internship, freelance, fellowship
+  category            String   // engineering, medical, civil_services, teaching, etc.
+  organization        String
+  location            String?
+  url                 String?
+  deadline            DateTime?
+  eligibility         String?  @db.Text
+  isRemote            Boolean  @default(false)
+  isNortheastSpecific Boolean  @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  savedBy SavedOpportunity[]
+
+  @@map("opportunities")
+}
+
+model CareerPath {
+  id               String   @id @default(cuid())
+  title            String
+  slug             String   @unique
+  description      String   @db.Text
+  content          String   @db.Text   // Markdown content
+  targetAudience   String
+  estimatedDuration String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  steps CareerStep[]
+
+  @@map("career_paths")
+}
+
+model CareerStep {
+  id          String @id @default(cuid())
+  order       Int
+  title       String
+  description String @db.Text
+
+  careerPathId String
+  careerPath   CareerPath @relation(fields: [careerPathId], references: [id], onDelete: Cascade)
+
+  @@map("career_steps")
+}
+
+model SavedOpportunity {
+  id String @id @default(cuid())
+
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  opportunityId String
+  opportunity   Opportunity @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+
+  savedAt DateTime @default(now())
+
+  @@unique([userId, opportunityId])
+  @@map("saved_opportunities")
+}

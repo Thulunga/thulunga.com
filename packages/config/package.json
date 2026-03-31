@@ -1,0 +1,8 @@
+{
+  "name": "@thulunga/config",
+  "private": true,
+  "version": "0.0.0",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "files": ["tailwind.config.ts", "tsconfig.base.json"]
+}

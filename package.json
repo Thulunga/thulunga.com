@@ -1,0 +1,24 @@
+{
+  "name": "thulunga",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "dev:web": "turbo dev --filter=@thulunga/web",
+    "dev:careers": "turbo dev --filter=@thulunga/careers",
+    "dev:api": "turbo dev --filter=@thulunga/api",
+    "db:generate": "turbo db:generate --filter=@thulunga/database",
+    "db:push": "turbo db:push --filter=@thulunga/database",
+    "db:migrate": "turbo db:migrate --filter=@thulunga/database"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0"
+  },
+  "packageManager": "npm@10.0.0"
+}
