@@ -1,0 +1,15 @@
+{
+  "extends": "@thulunga/config/tsconfig.base.json",
+  "compilerOptions": {
+    "plugins": [{ "name": "next" }],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@thulunga/ui": ["../../packages/ui/src"],
+      "@thulunga/types": ["../../packages/types/src"],
+      "@thulunga/utils": ["../../packages/utils/src"],
+      "@thulunga/config": ["../../packages/config"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
