@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Thulunga — Find your direction. Build your future.",
   description:
-    "Thulunga means inspiration in Bodo. A platform for students and young people from Bodoland and Northeast India — careers, guidance, community, and opportunity.",
+    "Thulunga means inspiration in Bodo. A platform for students and young people from Bodoland and Northeast India.",
   openGraph: {
     title: "Thulunga — Find your direction. Build your future.",
     description:
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -27,7 +28,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body style={{ margin: 0, padding: 0 }}>{children}</body>
+      <body style={{ margin: 0, padding: 0 }}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
