@@ -15,7 +15,8 @@
     "react-dom": "^18.3.0",
     "@thulunga/ui": "*",
     "@thulunga/config": "*",
-    "@thulunga/types": "*"
+    "@thulunga/types": "*",
+    "next-themes": "^0.4.4"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

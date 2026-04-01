@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -13,7 +15,67 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Remove default anchor styles */
 a {
   color: inherit;
+}
+
+:root {
+  --bg-page: #fdfbf7;
+  --bg-section-alt: #f5f3f0;
+  --bg-dark: #2d1c0e;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fdfbf7;
+
+  --text-primary: #2d1c0e;
+  --text-secondary: #756556;
+  --text-muted: #9e8e7a;
+  --text-on-dark: #faf0de;
+  --text-on-dark-muted: #b8ad9c;
+
+  --border-default: rgba(45, 28, 14, 0.08);
+  --border-hover: rgba(45, 112, 71, 0.2);
+
+  --gold: #b87a2e;
+  --gold-dark: #956026;
+  --gold-cta: #e3b060;
+  --gold-cta-hover: #d4943a;
+  --green: #2d7047;
+
+  --nav-bg: rgba(253, 251, 247, VAR_OPACITY);
+  --meaning-strip: #2d1c0e;
+  --cta-section: #2d1c0e;
+
+  --orb-gold: rgba(212, 148, 58, 0.12);
+  --orb-green: rgba(61, 139, 90, 0.08);
+  --weave-color: #8a7965;
+}
+
+.dark {
+  --bg-page: #1a1208;
+  --bg-section-alt: #221709;
+  --bg-dark: #0f0b05;
+  --bg-card: #261b0e;
+  --bg-card-hover: #2e2010;
+
+  --text-primary: #f0e8d8;
+  --text-secondary: #c4a97a;
+  --text-muted: #8a7055;
+  --text-on-dark: #f0e8d8;
+  --text-on-dark-muted: #8a7055;
+
+  --border-default: rgba(240, 232, 216, 0.08);
+  --border-hover: rgba(45, 112, 71, 0.35);
+
+  --gold: #d4943a;
+  --gold-dark: #e3b060;
+  --gold-cta: #c4832a;
+  --gold-cta-hover: #d4943a;
+  --green: #3d8a5a;
+
+  --meaning-strip: #0f0b05;
+  --cta-section: #0f0b05;
+
+  --orb-gold: rgba(212, 148, 58, 0.08);
+  --orb-green: rgba(61, 139, 90, 0.05);
+  --weave-color: #4a3a28;
 }
