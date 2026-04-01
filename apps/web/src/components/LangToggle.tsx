@@ -1,15 +1,13 @@
 "use client";
-import type { Lang } from "@/lib/translations";
 
-interface Props {
-  lang: Lang;
-  onToggle: () => void;
-}
+import { useLocalize } from "@/lib/LanguageContext";
 
-export default function LangToggle({ lang, onToggle }: Props) {
+export default function LangToggle() {
+  const { lang, setLang } = useLocalize();
+
   return (
     <button
-      onClick={onToggle}
+      onClick={() => setLang(lang === "en" ? "brx" : "en")}
       aria-label="Switch language"
       title={lang === "en" ? "Switch to Bodo" : "Switch to English"}
       style={{
@@ -27,7 +25,7 @@ export default function LangToggle({ lang, onToggle }: Props) {
         fontWeight: 600,
         fontFamily: "'DM Sans', sans-serif",
         letterSpacing: "0.04em",
-        transition: "background 0.2s, border-color 0.2s",
+        transition: "background 0.2s",
         flexShrink: 0,
       }}
       onMouseEnter={(e) => {

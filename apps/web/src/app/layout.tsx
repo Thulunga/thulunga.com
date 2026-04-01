@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
+import { LanguageProvider } from "@/lib/LanguageContext";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -30,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body style={{ margin: 0, padding: 0 }}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+          <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
